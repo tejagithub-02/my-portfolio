@@ -16,6 +16,11 @@ header{
     inset 0 1px 1px rgba(255,255,255,.12);
   
     animation:topFade 1s ease;
+  
+    /* STICKY */
+    position:sticky;
+    top:15px;
+    z-index:1000;
   }
   
   /* NAVBAR */
@@ -47,6 +52,7 @@ header{
     backdrop-filter:blur(10px);
     color:#5eead4;
     transform:translateY(-3px);
+  
     box-shadow:
     0 5px 15px rgba(94,234,212,.18),
     inset 0 1px 1px rgba(255,255,255,.12);
@@ -72,6 +78,7 @@ header{
     header{
       width:95%;
       padding:12px 10px;
+      top:10px;
     }
   
     nav ul{
