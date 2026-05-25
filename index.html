@@ -14,7 +14,24 @@
  
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+ <script>
+      function sendToWhatsApp(e){
+        e.preventDefault();
+      
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let message = document.getElementById("message").value;
+      
+        let phoneNumber = "919618591044";
+      
+        let url = "https://wa.me/" + phoneNumber + "?text="
+        + "Name: " + encodeURIComponent(name) + "%0a"
+        + "Email: " + encodeURIComponent(email) + "%0a"
+        + "Message: " + encodeURIComponent(message);
+      
+        window.open(url, "_blank");
+      }
+      </script>
 </head>
 
 
@@ -133,7 +150,7 @@
   
       </div>
   
-      <a href="#" class="about-btn">Download CV</a>
+      <a href="pdf/teja.pdf" target="_blank"class="about-btn">Download CV</a>
   
     </div>
   
@@ -153,83 +170,87 @@
   <div class="project-container">
 
     <!-- PROJECT 1 -->
-    <div class="project-card">
+<div class="project-card">
 
-      <div class="tag">E-Commerce</div>
+  <div class="tag">Catering Website</div>
 
-      <img src="images/project1.jpg" alt="">
+  <img src="images/catering.jfif" alt="The Classic Kitchen Website">
 
-      <h3>RAANVI Store</h3>
+  <h3>The Classic Kitchen</h3>
 
-      <p>
-        Modern e-commerce platform with responsive UI,
-        product pages and dashboards.
-      </p>
+  <p>
+    Modern catering service website developed using React.js
+    with responsive design, event catering sections,
+    food service details, and customer enquiry features.
+  </p>
 
-      <div class="tech">
-        <span>React</span>
-        <span>Spring Boot</span>
-        <span>MySQL</span>
-      </div>
+  <div class="tech">
+    <span>React.js</span>
+    <span>Bootstrap</span>
+    <span>JavaScript</span>
+  </div>
 
-      <div class="project-btns">
-        <a href="#">Live</a>
-        <a href="#">GitHub</a>
-      </div>
+  <div class="project-btns">
+    <a href="https://tckitchen.in" target="_blank">Live</a>
+    <a href="https://github.com/tejagithub-02/classic-kitchen">GitHub</a>
+  </div>
 
-    </div>
+</div>
 
     <!-- PROJECT 2 -->
     <div class="project-card">
 
-      <div class="tag">Dashboard</div>
-
-      <img src="images/project2.jpg" alt="">
-
-      <h3>Admin Dashboard</h3>
-
+      <div class="tag">MLM & B2B Dashboard</div>
+    
+      <img src="images/raanvi.png" alt="Raanvi User Dashboard">
+    
+      <h3>Raanvi User Dashboard</h3>
+    
       <p>
-        Responsive dashboard with analytics,
-        charts and modern UI design.
+        Advanced admin dashboard for MLM and B2B management
+        with user analytics, order tracking, business reports,
+        and responsive modern UI design.
       </p>
-
+    
       <div class="tech">
-        <span>React</span>
+        <span>React.js</span>
         <span>Bootstrap</span>
+        <span>Chart.js</span>
       </div>
-
+    
       <div class="project-btns">
-        <a href="#">Live</a>
-        <a href="#">GitHub</a>
+        <a href="https://raanvi-user.vercel.app/" target="_blank">Live</a>
+        <a href="https://github.com/tejagithub-02/raanvi-user">GitHub</a>
       </div>
-
+    
     </div>
 
     <!-- PROJECT 3 -->
     <div class="project-card">
 
-      <div class="tag">Portfolio</div>
-
-      <img src="images/project3.jpg" alt="">
-
-      <h3>Portfolio Website</h3>
-
+      <div class="tag">E-Commerce Website</div>
+    
+      <img src="images/satiys.jpg" alt="SATIYS E-Commerce Website">
+    
+      <h3>SATIYS Website</h3>
+    
       <p>
-        Creative portfolio with animations,
-        glassmorphism and responsive layouts.
+        Modern e-commerce platform developed for SATIYS
+        with responsive layouts, product management,
+        shopping features, and user-friendly UI design.
       </p>
-
+    
       <div class="tech">
-        <span>HTML</span>
-        <span>CSS</span>
+        <span>React.js</span>
+        <span>Bootstrap</span>
         <span>JavaScript</span>
       </div>
-
+    
       <div class="project-btns">
-        <a href="#">Live</a>
-        <a href="#">GitHub</a>
+        <a href="https://satiys-landing.vercel.app/" target="_blank">Live</a>
+        <a href="https://github.com/tejagithub-02/satiys-landing">GitHub</a>
       </div>
-
+    
     </div>
 
   </div>
@@ -272,24 +293,26 @@
   
         <div class="info-box">
           <h3>Location</h3>
-          <p>Hyderabad, India</p>
+          <p>Chennai, India</p>
         </div>
   
       </div>
   
       <!-- FORM -->
   
-      <form class="contact-form">
-  
-        <input type="text" placeholder="Your Name" required>
-  
-        <input type="email" placeholder="Your Email" required>
-  
-        <textarea rows="6" placeholder="Your Message"></textarea>
-  
+      <form class="contact-form" onsubmit="sendToWhatsApp(event)">
+
+        <input type="text" id="name" placeholder="Your Name" required>
+      
+        <input type="email" id="email" placeholder="Your Email" required>
+      
+        <textarea rows="6" id="message" placeholder="Your Message"></textarea>
+      
         <button type="submit">Send Message</button>
-  
+      
       </form>
+      
+     
   
     </div>
   
