@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Creative Home Page</title>
-
+  <title>Maruthi Teja | Full Stack Developer Portfolio</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f5d4'/%3E%3Cstop offset='100%25' stop-color='%2300bbf9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='%2307111f'/%3E%3Crect x='8' y='8' width='84' height='84' rx='16' fill='none' stroke='url(%23g)' stroke-width='2.5'/%3E%3Ctext x='50%25' y='58%25' dominant-baseline='middle' text-anchor='middle' font-size='44' font-family='Arial, sans-serif' font-weight='900' fill='url(%23g)'%3EMT%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#07111f">
 <link rel="stylesheet" href="styles/index.css">
  <link rel="stylesheet" href="styles/navbar.css">
  <link rel="stylesheet" href="styles/about.css">
@@ -31,22 +32,127 @@
       
         window.open(url, "_blank");
       }
+      // navbar
+      // ===== SIMPLE & SMOOTH ACTIVE LINK DETECTION =====
+(function() {
+  'use strict';
+  
+  // Wait for everything to load
+  window.addEventListener('load', function() {
+    
+    // Get all navigation links
+    const navLinks = document.querySelectorAll('nav ul li a');
+    
+    // Get all sections
+    const sections = {
+      home: document.querySelector('.home') || document.getElementById('home'),
+      about: document.getElementById('about'),
+      projects: document.getElementById('projects'),
+      contact: document.getElementById('contact')
+    };
+    
+    // Add IDs if missing
+    if (sections.home && !sections.home.id) sections.home.id = 'home';
+    if (sections.about && !sections.about.id) sections.about.id = 'about';
+    if (sections.projects && !sections.projects.id) sections.projects.id = 'projects';
+    if (sections.contact && !sections.contact.id) sections.contact.id = 'contact';
+    
+    // Smooth scroll on click
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        
+        if (target) {
+          const offsetTop = target.offsetTop - 80;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Update active link on scroll with requestAnimationFrame
+    let lastScrollY = 0;
+    let ticking = false;
+    
+    function updateActiveLink() {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      
+      let activeSection = 'home';
+      let minDistance = Infinity;
+      
+      // Find which section is closest to viewport center
+      for (const [id, section] of Object.entries(sections)) {
+        if (section) {
+          const sectionTop = section.offsetTop - 100;
+          const sectionBottom = sectionTop + section.offsetHeight;
+          const distance = Math.abs(scrollY - sectionTop);
+          
+          if (scrollY >= sectionTop - 100 && scrollY < sectionBottom - 100) {
+            activeSection = id;
+            break;
+          }
+          
+          if (distance < minDistance) {
+            minDistance = distance;
+            activeSection = id;
+          }
+        }
+      }
+      
+      // Special case for top of page
+      if (scrollY < 100) {
+        activeSection = 'home';
+      }
+      
+      // Update active class
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href').substring(1);
+        if (href === activeSection) {
+          if (!link.classList.contains('active')) {
+            link.classList.add('active');
+          }
+        } else {
+          if (link.classList.contains('active')) {
+            link.classList.remove('active');
+          }
+        }
+      });
+      
+      ticking = false;
+    }
+    
+    // Throttled scroll handler
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(updateActiveLink);
+        ticking = true;
+      }
+    });
+    
+    // Initial update
+    updateActiveLink();
+  });
+})();
       </script>
 </head>
 
 
 <body>
-
-    <header>
-        <nav>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-      </header>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+        <li><a href="#projects"><i class="fas fa-code"></i> Projects</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+    </nav>
+  </header>
     
       <section class="home">
 
