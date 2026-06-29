@@ -138,11 +138,64 @@
     updateActiveLink();
   });
 })();
+window.addEventListener("load",()=>{
+
+const loader=document.getElementById("preloader");
+
+setTimeout(()=>{
+
+    loader.classList.add("hide");
+
+    setTimeout(()=>{
+
+        loader.remove();
+
+    },1000);
+
+},1800);
+
+});
       </script>
 </head>
 
 
 <body>
+  
+<div id="preloader">
+
+  <div class="bg-animation">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+  </div>
+
+  <div class="loader-box">
+
+      <div class="ring ring1"></div>
+      <div class="ring ring2"></div>
+      <div class="ring ring3"></div>
+
+      <div class="logo-box">
+
+          <div class="logo-glow"></div>
+
+          <h1>MT</h1>
+
+      </div>
+
+      <h3 class="loading">
+          Loading Portfolio
+          <span></span>
+          <span></span>
+          <span></span>
+      </h3>
+
+  </div>
+
+</div>
   <header>
     <nav>
       <ul>
@@ -425,12 +478,30 @@
   </section>
   <!-- FOOTER -->
 
-<footer>
+  <footer>
 
-    <p>
-      © 2026 Maruthi Teja | All Rights Reserved
-    </p>
- 
-  </footer>
+    <div class="footer-social">
+
+        <a href="https://www.linkedin.com/in/maruthi-teja-thamba/" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+
+        <a href="https://github.com/tejagithub-02" target="_blank" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+        </a>
+
+        <a href="https://www.instagram.com/teja_thamba_06/" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+
+        <a href="mailto:tmaruthiteja2013@gmail.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+        </a>
+
+    </div>
+
+    <p>© 2026 Maruthi Teja</p>
+
+</footer>
 </body>
 </html>
