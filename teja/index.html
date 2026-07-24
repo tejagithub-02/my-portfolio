@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maruthi Teja | Full Stack Developer Portfolio</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f5d4'/%3E%3Cstop offset='100%25' stop-color='%2300bbf9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='%2307111f'/%3E%3Crect x='8' y='8' width='84' height='84' rx='16' fill='none' stroke='url(%23g)' stroke-width='2.5'/%3E%3Ctext x='50%25' y='58%25' dominant-baseline='middle' text-anchor='middle' font-size='44' font-family='Arial, sans-serif' font-weight='900' fill='url(%23g)'%3EMT%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#07111f">
+<link rel="stylesheet" href="styles/index.css">
+ <link rel="stylesheet" href="styles/navbar.css">
+ <link rel="stylesheet" href="styles/about.css">
+<link rel="stylesheet" href="styles/projects.css">
+<link rel="stylesheet" href="styles/contact.css">
+<link rel="stylesheet" href="styles/footer.css">
+ 
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+ <script>
+      function sendToWhatsApp(e){
+        e.preventDefault();
+      
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let message = document.getElementById("message").value;
+      
+        let phoneNumber = "919618591044";
+      
+        let url = "https://wa.me/" + phoneNumber + "?text="
+        + "Name: " + encodeURIComponent(name) + "%0a"
+        + "Email: " + encodeURIComponent(email) + "%0a"
+        + "Message: " + encodeURIComponent(message);
+      
+        window.open(url, "_blank");
+      }
+      // navbar
+      // ===== SIMPLE & SMOOTH ACTIVE LINK DETECTION =====
+(function() {
+  'use strict';
+  
+  // Wait for everything to load
+  window.addEventListener('load', function() {
+    
+    // Get all navigation links
+    const navLinks = document.querySelectorAll('nav ul li a');
+    
+    // Get all sections
+    const sections = {
+      home: document.querySelector('.home') || document.getElementById('home'),
+      about: document.getElementById('about'),
+      projects: document.getElementById('projects'),
+      contact: document.getElementById('contact')
+    };
+    
+    // Add IDs if missing
+    if (sections.home && !sections.home.id) sections.home.id = 'home';
+    if (sections.about && !sections.about.id) sections.about.id = 'about';
+    if (sections.projects && !sections.projects.id) sections.projects.id = 'projects';
+    if (sections.contact && !sections.contact.id) sections.contact.id = 'contact';
+    
+    // Smooth scroll on click
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        
+        if (target) {
+          const offsetTop = target.offsetTop - 80;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Update active link on scroll with requestAnimationFrame
+    let lastScrollY = 0;
+    let ticking = false;
+    
+    function updateActiveLink() {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      
+      let activeSection = 'home';
+      let minDistance = Infinity;
+      
+      // Find which section is closest to viewport center
+      for (const [id, section] of Object.entries(sections)) {
+        if (section) {
+          const sectionTop = section.offsetTop - 100;
+          const sectionBottom = sectionTop + section.offsetHeight;
+          const distance = Math.abs(scrollY - sectionTop);
+          
+          if (scrollY >= sectionTop - 100 && scrollY < sectionBottom - 100) {
+            activeSection = id;
+            break;
+          }
+          
+          if (distance < minDistance) {
+            minDistance = distance;
+            activeSection = id;
+          }
+        }
+      }
+      
+      // Special case for top of page
+      if (scrollY < 100) {
+        activeSection = 'home';
+      }
+      
+      // Update active class
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href').substring(1);
+        if (href === activeSection) {
+          if (!link.classList.contains('active')) {
+            link.classList.add('active');
+          }
+        } else {
+          if (link.classList.contains('active')) {
+            link.classList.remove('active');
+          }
+        }
+      });
+      
+      ticking = false;
+    }
+    
+    // Throttled scroll handler
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(updateActiveLink);
+        ticking = true;
+      }
+    });
+    
+    // Initial update
+    updateActiveLink();
+  });
+})();
+      </script>
+</head>
+
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+        <li><a href="#projects"><i class="fas fa-code"></i> Projects</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+    
+      <section class="home">
+
+        <div class="content">
+      
+          <h3>Hello, I'm</h3>
+      
+          <h1>Maruthi Teja</h1>
+      
+          <h2>Full Stack Developer</h2>
+      
+          <p>
+            Full Stack Developer skilled in React.js, Java,
+            Spring Boot and SQL, focused on building modern,
+            responsive and scalable web applications.
+          </p>
+      
+          <div class="details">
+      
+            <div class="box">
+              <h4>Frontend</h4>
+              <span>React.js • JavaScript • CSS</span>
+            </div>
+      
+            <div class="box">
+              <h4>Backend</h4>
+              <span>Java • Spring Boot • APIs</span>
+            </div>
+      
+            <div class="box">
+              <h4>Database</h4>
+              <span>MySQL • Oracle SQL</span>
+            </div>
+      
+          </div>
+      
+          <div class="buttons">
+            <a href="#contact">Hire Me</a>
+            <a href="#projects">Projects</a>
+          </div>
+      
+          <div class="socials">
+      
+            <a href="https://www.linkedin.com/in/maruthi-teja-thamba/"><i class="fab fa-linkedin-in"></i></a>
+      
+            <a href="https://github.com/tejagithub-02"><i class="fab fa-github"></i></a>
+      
+            <a href="https://www.instagram.com/teja_thamba_06/" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+      
+        </div>
+      
+        <div class="image">
+          <img src="images/photo11.jpeg" alt="profile">
+        </div>
+      
+      </section>
+      
+  
+  <!-- ABOUT SECTION -->
+
+  <section class="about"id="about">
+
+    <div class="about-image">
+      <img src="images/about.jfif" alt="about">
+    </div>
+  
+    <div class="about-content">
+  
+      <h4>About Me</h4>
+  
+      <h2>
+        Full Stack Developer Building
+        Modern Web Experiences
+      </h2>
+  
+      <p>
+        Skilled in React.js, Java, Spring Boot and SQL,
+        creating responsive, scalable and user-friendly
+        web applications with clean UI and smooth design.
+      </p>
+  
+      <div class="about-boxes">
+  
+        <div class="box">
+          <h3>10+</h3>
+          <span>Projects</span>
+        </div>
+  
+        <div class="box">
+          <h3>1+</h3>
+          <span>Experience</span>
+        </div>
+  
+        <div class="box">
+          <h3>100%</h3>
+          <span>Responsive</span>
+        </div>
+  
+      </div>
+  
+      <a href="pdf/teja.pdf" target="_blank"class="about-btn">Download CV</a>
+  
+    </div>
+  
+  </section>
+<!-- PROJECTS SECTION -->
+
+<section class="projects" id="projects">
+
+  <div class="project-title">
+
+    <h4>My Projects</h4>
+
+    <h2>Featured Works & Creative Projects</h2>
+
+  </div>
+
+  <div class="project-container">
+
+    <!-- PROJECT 1 -->
+<div class="project-card">
+
+  <div class="tag">Catering Website</div>
+
+  <img src="images/catering.jfif" alt="The Classic Kitchen Website">
+
+  <h3>The Classic Kitchen</h3>
+
+  <p>
+    Modern catering service website developed using React.js
+    with responsive design, event catering sections,
+    food service details, and customer enquiry features.
+  </p>
+
+  <div class="tech">
+    <span>React.js</span>
+    <span>Bootstrap</span>
+    <span>JavaScript</span>
+  </div>
+
+  <div class="project-btns">
+    <a href="https://tckitchen.in" target="_blank">Live</a>
+    <a href="https://github.com/tejagithub-02/classic-kitchen">GitHub</a>
+  </div>
+
+</div>
+
+    <!-- PROJECT 2 -->
+    <div class="project-card">
+
+      <div class="tag">MLM & B2B Dashboard</div>
+    
+      <img src="images/raanvi.png" alt="Raanvi User Dashboard">
+    
+      <h3>Raanvi User Dashboard</h3>
+    
+      <p>
+        Advanced admin dashboard for MLM and B2B management
+        with user analytics, order tracking, business reports,
+        and responsive modern UI design.
+      </p>
+    
+      <div class="tech">
+        <span>React.js</span>
+        <span>Bootstrap</span>
+        <span>Chart.js</span>
+      </div>
+    
+      <div class="project-btns">
+        <a href="https://raanvi-user.vercel.app/" target="_blank">Live</a>
+        <a href="https://github.com/tejagithub-02/raanvi-user">GitHub</a>
+      </div>
+    
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project-card">
+
+      <div class="tag">E-Commerce Website</div>
+    
+      <img src="images/satiys.jpg" alt="SATIYS E-Commerce Website">
+    
+      <h3>SATIYS Website</h3>
+    
+      <p>
+        Modern e-commerce platform developed for SATIYS
+        with responsive layouts, product management,
+        shopping features, and user-friendly UI design.
+      </p>
+    
+      <div class="tech">
+        <span>React.js</span>
+        <span>Bootstrap</span>
+        <span>JavaScript</span>
+      </div>
+    
+      <div class="project-btns">
+        <a href="https://satiys-landing.vercel.app/" target="_blank">Live</a>
+        <a href="https://github.com/tejagithub-02/satiys-landing">GitHub</a>
+      </div>
+    
+    </div>
+
+  </div>
+
+  <!-- VIEW ALL BUTTON -->
+  <div class="more-btn">
+    <a href="projects.html">View All Projects</a>
+  </div>
+
+</section>
+  <!-- CONTACT SECTION -->
+
+<section class="contact" id="contact">
+
+    <div class="contact-title">
+  
+      <h4>Contact Me</h4>
+  
+      <h2>
+        Let’s Work Together
+      </h2>
+  
+    </div>
+  
+    <div class="contact-container">
+  
+      <!-- LEFT SIDE -->
+  
+      <div class="contact-info">
+  
+        <div class="info-box">
+          <h3>Email</h3>
+          <p>tmaruthiteja2013@gmail.com</p>
+        </div>
+  
+        <div class="info-box">
+          <h3>Phone</h3>
+          <p>+91 9618591044</p>
+        </div>
+  
+        <div class="info-box">
+          <h3>Location</h3>
+          <p>Chennai, India</p>
+        </div>
+  
+      </div>
+  
+      <!-- FORM -->
+  
+      <form class="contact-form" onsubmit="sendToWhatsApp(event)">
+
+        <input type="text" id="name" placeholder="Your Name" required>
+      
+        <input type="email" id="email" placeholder="Your Email" required>
+      
+        <textarea rows="6" id="message" placeholder="Your Message"></textarea>
+      
+        <button type="submit">Send Message</button>
+      
+      </form>
+      
+     
+  
+    </div>
+  
+  </section>
+  <!-- FOOTER -->
+
+<footer>
+
+    <p>
+      © 2026 Maruthi Teja | All Rights Reserved
+    </p>
+ 
+  </footer>
+</body>
+</html>
