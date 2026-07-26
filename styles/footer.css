@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 footer{
@@ -31,4 +32,46 @@ footer p{
     font-size:13px;
   }
 
+=======
+footer{
+  background:#07111f;
+  padding:30px 20px;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+.footer-social{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin-bottom:18px;
+}
+
+.footer-social a{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-decoration:none;
+  color:#fff;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+  font-size:20px;
+  transition:.35s ease;
+}
+
+.footer-social a:hover{
+  background:linear-gradient(135deg,#00f5d4,#00bbf9);
+  color:#07111f;
+  transform:translateY(-6px) scale(1.08);
+  box-shadow:0 10px 25px rgba(0,245,212,.35);
+}
+
+footer p{
+  color:#b8c4d4;
+  font-size:15px;
+  letter-spacing:.5px;
+>>>>>>> 813d2f2d2ba50f7e4a57b3e96895ef9a15c15b58
 }

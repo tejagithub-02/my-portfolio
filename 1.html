@@ -138,64 +138,12 @@
     updateActiveLink();
   });
 })();
-window.addEventListener("load",()=>{
-
-const loader=document.getElementById("preloader");
-
-setTimeout(()=>{
-
-    loader.classList.add("hide");
-
-    setTimeout(()=>{
-
-        loader.remove();
-
-    },1200);
-
-},2000);
-
-});
+fetch("http://localhost:8081/projects") .then(response => response.json()) .then(data => { let container = document.getElementById("projects-container"); data.forEach(project => { container.innerHTML += ` <div class="project-card"> <div class="tag">${project.tag}</div> <img src="${project.image}" alt="${project.title}"> <h3>${project.title}</h3> <p>${project.description}</p> <div class="tech"> <span>${project.tech1}</span> <span>${project.tech2}</span> <span>${project.tech3}</span> </div> <div class="project-btns"> <a href="${project.liveLink}" target="_blank">Live</a> <a href="${project.githubLink}" target="_blank">GitHub</a> </div> </div> `; }); }) .catch(error => console.log(error));
       </script>
 </head>
 
 
 <body>
-  
-<div id="preloader">
-
-  <div class="bg-animation">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-  </div>
-
-  <div class="loader-box">
-
-      <div class="ring ring1"></div>
-      <div class="ring ring2"></div>
-      <div class="ring ring3"></div>
-
-      <div class="logo-box">
-
-          <div class="logo-glow"></div>
-
-          <h1>MT</h1>
-
-      </div>
-
-      <h3 class="loading">
-          Loading Portfolio
-          <span></span>
-          <span></span>
-          <span></span>
-      </h3>
-
-  </div>
-
-</div>
   <header>
     <nav>
       <ul>
@@ -326,94 +274,9 @@ setTimeout(()=>{
 
   </div>
 
-  <div class="project-container">
-
-    <!-- PROJECT 1 -->
-<div class="project-card">
-
-  <div class="tag">Catering Website</div>
-
-  <img src="images/catering.jfif" alt="The Classic Kitchen Website">
-
-  <h3>The Classic Kitchen</h3>
-
-  <p>
-    Modern catering service website developed using React.js
-    with responsive design, event catering sections,
-    food service details, and customer enquiry features.
-  </p>
-
-  <div class="tech">
-    <span>React.js</span>
-    <span>Bootstrap</span>
-    <span>JavaScript</span>
-  </div>
-
-  <div class="project-btns">
-    <a href="https://tckitchen.in" target="_blank">Live</a>
-    <a href="https://github.com/tejagithub-02/classic-kitchen">GitHub</a>
-  </div>
-
+ <!-- Dynamic Project Container --> 
+ <div class="project-container" id="projects-container">
 </div>
-
-    <!-- PROJECT 2 -->
-    <div class="project-card">
-
-      <div class="tag">MLM & B2B Dashboard</div>
-    
-      <img src="images/raanvi.png" alt="Raanvi User Dashboard">
-    
-      <h3>Raanvi User Dashboard</h3>
-    
-      <p>
-        Advanced admin dashboard for MLM and B2B management
-        with user analytics, order tracking, business reports,
-        and responsive modern UI design.
-      </p>
-    
-      <div class="tech">
-        <span>React.js</span>
-        <span>Bootstrap</span>
-        <span>Chart.js</span>
-      </div>
-    
-      <div class="project-btns">
-        <a href="https://raanvi-user.vercel.app/" target="_blank">Live</a>
-        <a href="https://github.com/tejagithub-02/raanvi-user">GitHub</a>
-      </div>
-    
-    </div>
-
-    <!-- PROJECT 3 -->
-    <div class="project-card">
-
-      <div class="tag">E-Commerce Website</div>
-    
-      <img src="images/satiys.jpg" alt="SATIYS E-Commerce Website">
-    
-      <h3>SATIYS Website</h3>
-    
-      <p>
-        Modern e-commerce platform developed for SATIYS
-        with responsive layouts, product management,
-        shopping features, and user-friendly UI design.
-      </p>
-    
-      <div class="tech">
-        <span>React.js</span>
-        <span>Bootstrap</span>
-        <span>JavaScript</span>
-      </div>
-    
-      <div class="project-btns">
-        <a href="https://satiys-landing.vercel.app/" target="_blank">Live</a>
-        <a href="https://github.com/tejagithub-02/satiys-landing">GitHub</a>
-      </div>
-    
-    </div>
-
-  </div>
-
   <!-- VIEW ALL BUTTON -->
   <div class="more-btn">
     <a href="projects.html">View All Projects</a>
@@ -478,30 +341,12 @@ setTimeout(()=>{
   </section>
   <!-- FOOTER -->
 
-  <footer>
+<footer>
 
-    <div class="footer-social">
-
-        <a href="https://www.linkedin.com/in/maruthi-teja-thamba/" target="_blank" aria-label="LinkedIn">
-            <i class="fab fa-linkedin-in"></i>
-        </a>
-
-        <a href="https://github.com/tejagithub-02" target="_blank" aria-label="GitHub">
-            <i class="fab fa-github"></i>
-        </a>
-
-        <a href="https://www.instagram.com/teja_thamba_06/" target="_blank" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
-        </a>
-
-        <a href="mailto:tmaruthiteja2013@gmail.com" aria-label="Email">
-            <i class="fas fa-envelope"></i>
-        </a>
-
-    </div>
-
-    <p>© 2026 Maruthi Teja</p>
-
-</footer>
+    <p>
+      © 2026 Maruthi Teja | All Rights Reserved
+    </p>
+ 
+  </footer>
 </body>
 </html>
